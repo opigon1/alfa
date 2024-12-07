@@ -1,0 +1,37 @@
+@import '../mixins/mixins.scss';
+
+%h1 {
+  @include font($fz: 60px, $fw: 900, $lh: 120%);
+}
+
+%h2 {
+  @include font($fz: 40px, $fw: 900, $lh: 120%);
+}
+
+%h3-bold {
+  @include font($fz: 30px, $fw: 800, $lh: 150%);
+}
+
+%h3-regular {
+  @include font($fz: 30px, $fw: 400, $lh: 150%);
+}
+
+%label-bold {
+  @include font($fz: 24px, $fw: 800, $lh: 100%);
+}
+
+%label {
+  @include font($fz: 24px, $fw: 500, $lh: 100%);
+}
+
+%body-l {
+  @include font($fz: 30px, $fw: 400, $lh: 120%);
+}
+
+%body-s-bold {
+  @include font($fz: 20px, $fw: 800, $lh: 125%);
+}
+
+%body-s-regular {
+  @include font($fz: 20px, $fw: 400, $lh: 125%);
+}

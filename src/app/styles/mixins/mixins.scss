@@ -1,0 +1,6 @@
+@mixin font($fz, $fw, $lh) {
+  font-family: 'TT Neoris', sans-serif;
+  font-size: $fz;
+  font-weight: $fw;
+  line-height: $lh;
+}
