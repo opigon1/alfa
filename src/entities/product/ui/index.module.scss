@@ -1,0 +1,91 @@
+@use "../../../app/styles/font/typography.scss";
+
+.element {
+  position: relative;
+  max-width: 282px;
+  width: 100%;
+  border-radius: 10px;
+  background-color: white;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  list-style: none;
+
+  .element_img {
+    display: block;
+    width: 100%;
+    height: 282px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+    background-color: #f5f5f5;
+  }
+
+  .element_discription {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+  }
+
+  .element_name {
+    @extend %body-s-regular;
+
+    width: 90%;
+    margin: 0;
+    color: #282723;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .element_like_container {
+    position: absolute;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .element_like {
+      padding: 0;
+      width: 22px;
+      height: 19px;
+      background-image: url("../../../shared/assets/images/like.svg");
+      background-color: transparent;
+      background-repeat: no-repeat;
+      background-position: center;
+      border: 0;
+      outline: none;
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+
+      &_active {
+        background-image: url("../../../shared/assets/images/like_active.svg");
+      }
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+
+  .element_delete {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 24px;
+    height: 24px;
+    background-image: url("../../../shared/assets/images/Trash.svg");
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 18px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}

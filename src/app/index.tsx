@@ -1,10 +1,13 @@
-import Header from "../shared/ui/header"
+import Card from "../entities/product/ui";
+import Header from "../shared/ui/header";
 
 function App() {
-
   return (
-    <div><Header /></div>
-  )
+    <div>
+      <Header />
+      <Card />
+    </div>
+  );
 }
 
-export default App
+export default App;
