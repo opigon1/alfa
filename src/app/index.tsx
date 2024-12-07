@@ -1,8 +1,9 @@
+import Header from "../shared/ui/header"
 
 function App() {
 
   return (
-    <div></div>
+    <div><Header /></div>
   )
 }
 
