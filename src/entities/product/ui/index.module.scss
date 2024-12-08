@@ -74,7 +74,7 @@
     right: 12px;
     width: 24px;
     height: 24px;
-    background-image: url("../../../shared/assets/images/Trash.svg");
+    background-image: url("../../../shared/assets/images/red-trash.svg");
     background-color: transparent;
     background-repeat: no-repeat;
     background-position: center;
@@ -83,6 +83,7 @@
     outline: none;
     cursor: pointer;
     transition: opacity 0.2s ease;
+    color: #282723;
 
     &:hover {
       opacity: 0.8;

@@ -1,11 +1,11 @@
 
-import { CardList } from "../widgets";
+import { Providers } from "./providers";
 
 function App() {
   return (
-    <div>
-      <CardList />
-    </div>
+    <Providers >
+      <div>123</div>
+    </Providers>
   );
 }
 
