@@ -1,11 +1,9 @@
 
-import { Providers } from "./providers";
+import { Provider } from "./providers";
 
 function App() {
   return (
-    <Providers >
-      <div>123</div>
-    </Providers>
+    <Provider />
   );
 }
 
