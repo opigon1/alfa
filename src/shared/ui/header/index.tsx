@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Logo from "../../assets/images/logo.png";
 import styles from "./index.module.scss";
 
@@ -7,8 +8,16 @@ const Header = () => {
       <img className={styles.logo} src={Logo} alt="Логотип" />
       <nav className={styles.nav}>
         <ul className={styles.list}>
-          <li className={styles.item}>Все картчоки</li>
-          <li className={styles.item}>Создать карточку</li>
+          <li>
+            <Link to="/" className={styles.item}>
+              Все картчоки
+            </Link>
+          </li>
+          <li>
+            <Link to="/create-product" className={styles.item}>
+              Создать карточку
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>
