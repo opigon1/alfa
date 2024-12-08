@@ -1,11 +1,10 @@
-import Card from "../entities/product/ui";
-import Header from "../shared/ui/header";
+
+import { CardList } from "../widgets";
 
 function App() {
   return (
     <div>
-      <Header />
-      <Card />
+      <CardList />
     </div>
   );
 }
