@@ -7,11 +7,15 @@ export const Card = ({
   title,
   thumbnail,
   isLiked,
+  isFavorite,
   onCardClick,
   onLike,
   onDelete,
+  onFavorite,
   rating,
 }: ICardProps) => {
+  console.log(isFavorite);
+  
   return (
     <li className={styles.element}>
       <button
@@ -20,9 +24,9 @@ export const Card = ({
         onClick={() => onDelete?.(id)}
       />
       <button
-        className={styles.element_favirite}
+        className={!isFavorite ? styles.element_favirite : styles.element_favirite_active}
         type="button"
-        onClick={() => onDelete?.(id)}
+        onClick={() => onFavorite?.(id)}
       />
       <Link to={`/products/${id}`} className={styles.element_link}>
         <img

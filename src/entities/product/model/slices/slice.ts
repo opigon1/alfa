@@ -37,6 +37,24 @@ const productSlice = createSlice({
       );
       saveProductsToLocalStorage(state.products);
     },
+    likeCard: (state, action) => {
+      const product = state.products.find(
+        (product) => product.id === action.payload
+      );
+      if (product) {
+        product.liked = !product.liked;
+      }
+      saveProductsToLocalStorage(state.products);
+    },
+    toggleFavorite: (state, action) => {
+      const product = state.products.find(
+        (product) => product.id === action.payload
+      );
+      if (product) {
+        product.favorite = !product.favorite;
+      }
+      saveProductsToLocalStorage(state.products);
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(addCard.fulfilled, (state, action) => {
@@ -46,5 +64,5 @@ const productSlice = createSlice({
   },
 });
 
-export const { deleteCard } = productSlice.actions;
+export const { deleteCard, likeCard, toggleFavorite } = productSlice.actions;
 export const productReducer = productSlice.reducer;

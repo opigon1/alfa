@@ -28,10 +28,12 @@ export interface ICardActions {
     onCardClick?: (id: number) => void;
     onLike?: (id: number) => void;
     onDelete?: (id: number) => void;
+    onFavorite?: (id: number) => void;
 }
 
 export interface ICardState {
     isLiked: boolean;
+    isFavorite: boolean;
 }
 
 export interface ICardProps extends Pick<IProduct, 'id' | 'title' | 'thumbnail' | 'rating'>, ICardActions, ICardState {}
@@ -41,5 +43,6 @@ export const transformProductToCard = (product: IProduct): Omit<ICardProps, 'onC
     title: product.title,
     thumbnail: product.thumbnail,
     isLiked: product.liked || false,
+    isFavorite: product.favorite || false,
     rating: product.rating
 });
