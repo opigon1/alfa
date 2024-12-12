@@ -10,6 +10,7 @@ export const Card = ({
   onCardClick,
   onLike,
   onDelete,
+  rating,
 }: ICardProps) => {
   return (
     <li className={styles.element}>
@@ -36,6 +37,7 @@ export const Card = ({
             type="button"
             onClick={() => onLike?.(id)}
           />
+          <span className={styles.element_rating}>{Math.round(rating)}</span>
         </div>
       </div>
     </li>

@@ -39,6 +39,8 @@
   }
 
   .element_like_container {
+    display: flex;
+    flex-direction: column;
     position: absolute;
     right: 20px;
     display: flex;
@@ -65,6 +67,10 @@
       &:hover {
         opacity: 0.7;
       }
+    }
+
+    .element_rating {
+      color: black;
     }
   }
 

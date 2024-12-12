@@ -32,11 +32,12 @@ export interface ICardState {
     isLiked: boolean;
 }
 
-export interface ICardProps extends Pick<IProduct, 'id' | 'title' | 'thumbnail'>, ICardActions, ICardState {}
+export interface ICardProps extends Pick<IProduct, 'id' | 'title' | 'thumbnail' | 'rating'>, ICardActions, ICardState {}
 
 export const transformProductToCard = (product: IProduct): Omit<ICardProps, 'onCardClick' | 'onLike' | 'onDelete'> => ({
     id: product.id,
     title: product.title,
     thumbnail: product.thumbnail,
-    isLiked: false
+    isLiked: false,
+    rating: product.rating
 });
