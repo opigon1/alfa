@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { IProduct, IProductState } from "../card";
-import { fetchProducts } from "../../../../shared/api/api";
+import { createProduct, fetchProducts } from "../../../../shared/api/api";
 
 export const getCards = createAsyncThunk<IProduct[], void>(
   "product/fetchProducts",
@@ -8,6 +8,18 @@ export const getCards = createAsyncThunk<IProduct[], void>(
     try {
       const products = await fetchProducts();
       return products;
+    } catch (e) {
+      return rejectWithValue(e);
+    }
+  }
+);
+
+export const addCard = createAsyncThunk<IProduct, IProduct>(
+  "product/addCard",
+  async (product, { rejectWithValue }) => {
+    try {
+      const response = await createProduct(product);
+      return response;
     } catch (e) {
       return rejectWithValue(e);
     }
@@ -35,6 +47,18 @@ const productSlice = createSlice({
         state.products = action.payload;
       })
       .addCase(getCards.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload as string;
+      })
+      .addCase(addCard.pending, (state) => {
+        state.isLoading = true;
+        state.error = "";
+      })
+      .addCase(addCard.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.products.push(action.payload);
+      })
+      .addCase(addCard.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload as string;
       });

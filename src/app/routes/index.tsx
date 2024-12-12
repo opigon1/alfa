@@ -4,6 +4,7 @@ import PATHS from "./paths";
 import { Products } from "../../pages/products";
 import { ProductDetailsPage } from "../../pages/product-details/ui";
 import { fetchProductById } from "../../shared/api/api";
+import { CreateProduct } from "../../pages/add-product";
 
 export const routes = createBrowserRouter([
   {
@@ -30,7 +31,7 @@ export const routes = createBrowserRouter([
       },
       {
         path: PATHS.CREATE_PRODUCT,
-        element: <div>Create product</div>,
+        element: <CreateProduct />,
       },
     ],
   },

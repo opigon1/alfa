@@ -4,7 +4,7 @@ const API_CONFIG = {
         products: {
             all: '/products',
             byId: (id: number) => `/products/${id}`,
-            search: (query: string) => `/products/search?q=${query}`
+            create: '/products/add',
         }
     }
 }
