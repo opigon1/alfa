@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createHashRouter } from "react-router-dom";
 import { Layout } from "../../widgets/layout/ui";
 import PATHS from "./paths";
 import { Products } from "../../pages/products";
@@ -6,7 +6,7 @@ import { ProductDetailsPage } from "../../pages/product-details/ui";
 import { findProductInLocalStorage } from "../../shared/utils/localStorageService";
 import { AddCardPage } from "../../pages/add-product";
 
-export const routes = createBrowserRouter([
+export const routes = createHashRouter([
   {
     path: PATHS.MAIN,
     element: <Layout />,

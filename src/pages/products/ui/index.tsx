@@ -18,7 +18,7 @@ export const Products = () => {
         }
     }
     localProduct();
-  }, []);
+  }, [products]);
 
   const handleToggleFavorite = () => {
     setShowFavorite(!sohwFavorite);
