@@ -1,25 +1,30 @@
-import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../../../app/store/hooks";
-import { getCards } from "../../../entities/product/model/slices/slice";
+import { useEffect, useState } from "react";
 import { Card } from "../../../entities/index";
 import styles from "./index.module.scss";
+import { IProduct } from "../../../entities/product/model/card";
+import { loadProductsFromLocalStorage, saveProductsToLocalStorage } from "../../../shared/utils/localStorageService";
+import { fetchProducts } from "../../../shared/api/api";
 
 export const CardList = () => {
-  const dispatch = useAppDispatch();
-  const cards = useAppSelector((state) => {
-    return state.product.products;
-  });
-  const isLoading = useAppSelector((state) => state.product.isLoading);
-  const error = useAppSelector((state) => state.product.error);
+  const [cards, setCards] = useState<IProduct[]>([]);
 
   useEffect(() => {
-    dispatch(getCards());
-  }, [dispatch]);
+    const localProduct = async () => {
+      const localProduct = loadProductsFromLocalStorage();
+      if (localProduct.length === 0) {
+        const serverProduct = await fetchProducts();
+        setCards(serverProduct);
+        saveProductsToLocalStorage(serverProduct);
+      }else {
+        setCards(localProduct);
+      }
+    }
+
+    localProduct()
+  }, [])
 
   return (
     <ul className={styles.list}>
-      {isLoading && <div>Loading...</div>}
-      {error && <div>{error}</div>}
       {cards?.map((card) => (
         <Card isLiked={false} key={card.id} {...card}></Card>
       ))}
