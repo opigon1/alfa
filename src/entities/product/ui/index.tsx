@@ -19,6 +19,11 @@ export const Card = ({
         type="button"
         onClick={() => onDelete?.(id)}
       />
+      <button
+        className={styles.element_favirite}
+        type="button"
+        onClick={() => onDelete?.(id)}
+      />
       <Link to={`/products/${id}`} className={styles.element_link}>
         <img
           src={thumbnail}

@@ -1,18 +1,17 @@
-// src/pages/add-product/ui/index.tsx
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useAppDispatch } from "../../../app/store/hooks";
 import { addCard } from "../../../entities/product/model/slices/slice";
-import styles from "./index.module.scss"; // Импортируем стили
+import styles from "./index.module.scss";
 
 interface IFormInput {
   title: string;
   description: string;
-  price: number;
   thumbnail: string;
 }
 
 export const CreateProduct: React.FC = () => {
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const dispatch = useAppDispatch();
   const {
     register,
@@ -25,9 +24,9 @@ export const CreateProduct: React.FC = () => {
       id: Date.now(),
       title: data.title,
       description: data.description,
-      price: data.price,
+      price: Math.floor(Math.random() * 100) + 1,
       discountPercentage: Math.floor(Math.random() * 50),
-      rating: Math.floor(Math.random() * 6) + 1,
+      rating: 0,
       stock: Math.floor(Math.random() * 100) + 1,
       brand: "Random Brand",
       category: "Random Category",
@@ -36,6 +35,11 @@ export const CreateProduct: React.FC = () => {
     };
 
     dispatch(addCard(newProduct));
+    setSuccessMessage("Карточка успешно создана!");
+
+    setTimeout(() => {
+      setSuccessMessage(null);
+    }, 3000);
   };
 
   return (
@@ -64,26 +68,16 @@ export const CreateProduct: React.FC = () => {
           )}
         </div>
         <div className={styles.formGroup}>
-          <label className={styles.label}>Цена:</label>
-          <input
-            className={styles.input}
-            type="number"
-            {...register("price", {
-              required: "Цена обязательна",
-              min: { value: 0, message: "Цена не может быть отрицательной" },
-            })}
-          />
-          {errors.price && (
-            <p className={styles.error}>{errors.price.message}</p>
-          )}
-        </div>
-        <div className={styles.formGroup}>
           <label className={styles.label}>URL изображения:</label>
           <input
             className={styles.input}
             type="text"
             {...register("thumbnail", {
               required: "URL изображения обязателен",
+              pattern: {
+                value: /https?:\/\/\S+\.\S+/g,
+                message: "Введите действительный URL изображения",
+              },
             })}
           />
           {errors.thumbnail && (
@@ -94,6 +88,9 @@ export const CreateProduct: React.FC = () => {
           Создать продукт
         </button>
       </form>
+      {successMessage && (
+        <p className={styles.successMessage}>{successMessage}</p>
+      )}
     </div>
   );
 };

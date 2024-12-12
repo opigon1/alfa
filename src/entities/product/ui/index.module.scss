@@ -95,4 +95,26 @@
       opacity: 0.8;
     }
   }
+
+  .element_favirite {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: 24px;
+    height: 24px;
+    background-image: url("../../../shared/assets/images/free-icon-favorite-disabled.png");
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 18px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    &_active {
+      background-image: url("../../../shared/assets/images/free-icon-favorite-active.png");
+    }
+  }
+
+
 }

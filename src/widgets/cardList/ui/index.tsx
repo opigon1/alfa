@@ -4,9 +4,13 @@ import styles from "./index.module.scss";
 import { IProduct } from "../../../entities/product/model/card";
 import { loadProductsFromLocalStorage, saveProductsToLocalStorage } from "../../../shared/utils/localStorageService";
 import { fetchProducts } from "../../../shared/api/api";
+import { useAppDispatch, useAppSelector } from "../../../app/store/hooks";
+import { deleteCard } from "../../../entities/product/model/slices/slice";
 
 export const CardList = () => {
   const [cards, setCards] = useState<IProduct[]>([]);
+  const dispatch = useAppDispatch();
+  const products = useAppSelector(state => state.product.products);
 
   useEffect(() => {
     const localProduct = async () => {
@@ -21,12 +25,17 @@ export const CardList = () => {
     }
 
     localProduct()
-  }, [])
+  }, [products])
+
+  const handleDeleteCard = (id: number) => {
+    dispatch(deleteCard(id));
+    
+  }
 
   return (
     <ul className={styles.list}>
       {cards?.map((card) => (
-        <Card isLiked={false} key={card.id} {...card}></Card>
+        <Card isLiked={false} key={card.id} onDelete={() => handleDeleteCard(card.id)} {...card}></Card>
       ))}
     </ul>
   );

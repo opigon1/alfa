@@ -10,6 +10,8 @@ export interface IProduct {
     category: string;
     thumbnail: string;
     images: string[];
+    liked?: boolean;
+    favorite?: boolean;
 }
 
 export interface IProductResponse {
@@ -38,6 +40,6 @@ export const transformProductToCard = (product: IProduct): Omit<ICardProps, 'onC
     id: product.id,
     title: product.title,
     thumbnail: product.thumbnail,
-    isLiked: false,
+    isLiked: product.liked || false,
     rating: product.rating
 });
