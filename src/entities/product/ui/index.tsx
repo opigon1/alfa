@@ -14,8 +14,7 @@ export const Card = ({
   onFavorite,
   rating,
 }: ICardProps) => {
-  console.log(isFavorite);
-  
+
   return (
     <li className={styles.element}>
       <button
