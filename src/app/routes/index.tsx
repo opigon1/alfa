@@ -3,8 +3,8 @@ import { Layout } from "../../widgets/layout/ui";
 import PATHS from "./paths";
 import { Products } from "../../pages/products";
 import { ProductDetailsPage } from "../../pages/product-details/ui";
-import { CreateProduct } from "../../pages/add-product";
 import { findProductInLocalStorage } from "../../shared/utils/localStorageService";
+import { AddCardPage } from "../../pages/add-product";
 
 export const routes = createBrowserRouter([
   {
@@ -31,7 +31,7 @@ export const routes = createBrowserRouter([
       },
       {
         path: PATHS.CREATE_PRODUCT,
-        element: <CreateProduct />,
+        element: <AddCardPage />,
       },
     ],
   },

@@ -43,6 +43,7 @@ const productSlice = createSlice({
       );
       if (product) {
         product.liked = !product.liked;
+        product.rating = product.liked ? product.rating + 1 : product.rating - 1;
       }
       saveProductsToLocalStorage(state.products);
     },

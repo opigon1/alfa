@@ -1,1 +1,1 @@
-export {CreateProduct} from "./ui/index";
+export {AddCardPage} from "./ui/index";
