@@ -31,6 +31,9 @@ const productSlice = createSlice({
   name: "product",
   initialState,
   reducers: {
+    setProducts(state, action) {
+      state.products = action.payload;
+    },
     deleteCard: (state, action) => {
       state.products = state.products.filter(
         (product) => product.id !== action.payload
@@ -67,5 +70,5 @@ const productSlice = createSlice({
   },
 });
 
-export const { deleteCard, likeCard, toggleFavorite } = productSlice.actions;
+export const { deleteCard, likeCard, toggleFavorite, setProducts } = productSlice.actions;
 export const productReducer = productSlice.reducer;

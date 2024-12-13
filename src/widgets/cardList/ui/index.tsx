@@ -10,7 +10,6 @@ import {
 
 export const CardList = ({ products }: { products: IProduct[] }) => {
   const dispatch = useAppDispatch();
-
   const handleDeleteCard = (id: number) => {
     dispatch(deleteCard(id));
   };
