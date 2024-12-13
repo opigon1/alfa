@@ -1,50 +1,54 @@
-# React + TypeScript + Vite
+# Приложение для управления продуктами
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Описание
 
-Currently, two official plugins are available:
+Данный проект представляет собой приложение для управления продуктами. Реализован следующий функционал:
+- **Лайк** продуктов.
+- **Добавление в избранное**.
+- **Удаление** продуктов.
+- **Добавление новых продуктов**.
+- **Переход на страницу продукта**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Приложение создано с использованием современных технологий и инструментов: 
+- **TypeScript**
+- **React**
+- **Redux**
+- **React Hook Form**
+- **Axios**
 
-## Expanding the ESLint configuration
+## Особенности реализации
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Работа с API**: 
+  - Для взаимодействия с данными продуктов использовались моковые ручки API. Они поддерживают базовые действия, такие как создание, удаление, обновление, но эти изменения **не сохраняются**. Это ограничение связано с отсутствием полноценной серверной базы данных.
+  - Чтобы сохранить изменения (например, лайки, добавление в избранное), была использована технология **LocalStorage**.
 
-- Configure the top-level `parserOptions` property like this:
+- **Redux**:
+  - Состояние приложения управляется через глобальное хранилище Redux.
+  - Для синхронизации между компонентами используются Redux-экшены и селекторы.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- **React Hook Form**:
+  - Использован для работы с формами (например, добавление нового продукта).
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Как запустить проект
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+1. Убедитесь, что у вас установлен Node.js и менеджер пакетов Yarn.
+2. Склонируйте репозиторий:
+   ```bash
+   git clone <https://github.com/opigon1/alfa>
+3. Установите зависимости:
+   ```bash
+   git clone <https://github.com/opigon1/alfa>
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Основные компоненты
+Products
+Отвечает за отображение списка продуктов. Поддерживает фильтрацию (по избранным), отображение и обновление списка.
+
+### CardList
+Компонент для отрисовки карточек продуктов. Обеспечивает обработку событий (лайки, добавление в избранное, удаление).
+
+### FavoriteFilter
+Фильтр для отображения только избранных продуктов.
+
+## Ограничения
+- API моковое, поэтому действия не сохраняются после перезагрузки страницы.
+- Для демонстрации работы с данными используется LocalStorage.
